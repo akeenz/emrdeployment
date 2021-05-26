@@ -27,8 +27,15 @@ pipeline {
         }
         stage('list_s3_bucket_item') {
             steps {
-                sh 'aws s3 ls s3://test-cli-buck/jenkins/'
+                sh 'aws ss3 ls s3://test-cli-buck/jenkins/'
                 sh 'echo item in s3 bucket'
+            }
+        }
+        stage('clone_git_repo') {
+            steps {
+                sh 'git clone https://github.com/akeenz/emr-hive-dataset.git'
+                sh 'echo see repo below'
+                sh 'ls'
             }
         }
     }
