@@ -9,7 +9,7 @@ pipeline {
         }
         stage('prepare_pipeline') {
             steps {
-                sh 'scipts/prep.sh'
+                sh 'scripts/prep.sh'
             }
         }
         stage('download_image') {
