@@ -9,6 +9,7 @@ pipeline {
         }
         stage('prepare_pipeline') {
             steps {
+                sh 'chmod +x scripts/prep.sh'
                 sh 'scripts/prep.sh'
             }
         }
@@ -33,6 +34,7 @@ pipeline {
         }
         stage('clone_git_repo') {
             steps {
+                sh 'chmod +x scripts/build.sh'
                 sh 'scripts/build.sh'
             }
         }
