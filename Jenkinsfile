@@ -38,5 +38,12 @@ pipeline {
                 sh 'ls'
             }
         }
+        stage('copy_fiel_to_s3') {
+            steps {
+                sh 'aws s3 cp emr-hive-dataset/dataset/sale.sql s3://test-cli-buck/jenkins/'
+                sh 'echo see file below'
+                sh 'aws s3 ls s3://test-cli-buck/jenkins/'
+            }
+        }
     }
 }
