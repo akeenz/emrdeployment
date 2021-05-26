@@ -14,9 +14,15 @@ pipeline {
         }
         stage('download_image') {
             steps {
-                sh 'wget https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg'
+                sh 'wget https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg whitecat.jpg' 
                 sh 'echo see downloaded image below'
                 sh 'ls'
+            }
+        }
+        stage('upload_image_to_s3_bucket') {
+            steps {
+                sh 'aws s3 cp whitecat.jpg s3://test-cli-buck/jenkins/'
+                sh 'echo i have copied the image'
             }
         }
     }
