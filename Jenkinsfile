@@ -7,9 +7,9 @@ pipeline {
                 sh 'echo Hello ${name}, we are ready to start your pipeline'
             }
         }
-        stage('list_s3_bucket') {
+        stage('prepare_pipeline') {
             steps {
-                sh 'aws s3 ls'
+                sh 'scipts/prep.sh'
             }
         }
         stage('download_image') {
@@ -31,13 +31,11 @@ pipeline {
                 sh 'echo item in s3 bucket'
             }
         }
-        // stage('clone_git_repo') {
-        //     steps {
-        //         sh 'git clone https://github.com/akeenz/emr-hive-dataset.git'
-        //         sh 'echo see repo below'
-        //         sh 'ls'
-        //     }
-        // }
+        stage('clone_git_repo') {
+            steps {
+                sh 'scripts/build.sh'
+            }
+        }
         stage('copy_fiel_to_s3') {
             steps {
                 sh 'aws s3 cp emr-hive-dataset/dataset/sale.sql s3://test-cli-buck/jenkins/'
