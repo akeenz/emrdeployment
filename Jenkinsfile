@@ -25,5 +25,11 @@ pipeline {
                 sh 'echo i have copied the image'
             }
         }
+        stage('list_s3_bucket_item') {
+            steps {
+                sh 'aws s3 ls s3://test-cli-buck/jenkins/'
+                sh 'echo item in s3 bucket'
+            }
+        }
     }
 }
