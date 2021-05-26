@@ -27,7 +27,7 @@ pipeline {
         }
         stage('list_s3_bucket_item') {
             steps {
-                sh 'aws ss3 ls s3://test-cli-buck/jenkins/'
+                sh 'aws s3 ls s3://test-cli-buck/jenkins/'
                 sh 'echo item in s3 bucket'
             }
         }
