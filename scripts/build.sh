@@ -2,3 +2,4 @@ wget -O whitecat.jpg https://img.webmd.com/dtmcms/live/webmd/consumer_assets/sit
 git clone https://github.com/akeenz/emr-hive-dataset.git
 #zip both downlaoded files
 zip artifact.zip whitecat.jpg dataset/sale.sql
+ls 

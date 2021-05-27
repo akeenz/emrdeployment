@@ -14,12 +14,12 @@ pipeline {
                 sh 'scripts/build.sh'
             }
         }
-        stage('deploy') {
-            steps {
-                sh 'chmod +x scripts/deploy.sh'
-                sh 'scripts/deploy.sh'
-            }
-        }
+        // stage('deploy') {
+        //     steps {
+        //         sh 'chmod +x scripts/deploy.sh'
+        //         sh 'scripts/deploy.sh'
+        //     }
+        // }
       
     }
 
