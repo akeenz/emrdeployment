@@ -1,6 +1,3 @@
-curl -v -X GET http://jenkins-url:8080/crumbIssuer/api/json --user admin:c272c5215d8847558da6bacd8bfbb21f
-
-
 pipeline {
     agent any
 
