@@ -1,5 +1,5 @@
-wget -O whitecat.jpg https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg
+wget -O ${buildername}_favourite_picture.jpg ${picture_name}
 git clone https://github.com/akeenz/emr-hive-dataset.git
 #zip both downlaoded files
-zip artifact.zip whitecat.jpg emr-hive-dataset/dataset/sale.sql
+zip artifact.zip ${buildername}_favourite_picture.jpg emr-hive-dataset/dataset/sale.sql
 ls 
