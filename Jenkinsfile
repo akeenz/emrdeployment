@@ -2,48 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('prebuild') {
             steps {
-                sh 'echo Hello ${name}, we are ready to start your pipeline'
+                sh 'chmod +x scripts/prebuild.sh'
+                sh 'scripts/prebuild.sh'
             }
         }
-        stage('prepare_pipeline') {
-            steps {
-                sh 'chmod +x scripts/prep.sh'
-                sh 'scripts/prep.sh'
-            }
-        }
-        stage('download_image') {
-            steps {
-                sh 'wget -O whitecat.jpg https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg' 
-                sh 'echo see downloaded image below'
-                sh 'ls'
-            }
-        }
-        stage('upload_image_to_s3_bucket') {
-            steps {
-                sh 'aws s3 cp whitecat.jpg s3://test-cli-buck/jenkins/'
-                sh 'echo i have copied the image'
-            }
-        }
-        stage('list_s3_bucket_item') {
-            steps {
-                sh 'aws s3 ls s3://test-cli-buck/jenkins/'
-                sh 'echo item in s3 bucket'
-            }
-        }
-        stage('clone_git_repo') {
+        stage('build') {
             steps {
                 sh 'chmod +x scripts/build.sh'
                 sh 'scripts/build.sh'
             }
         }
-        stage('copy_fiel_to_s3') {
+        stage('deploy') {
             steps {
-                sh 'aws s3 cp emr-hive-dataset/dataset/sale.sql s3://test-cli-buck/jenkins/'
-                sh 'echo see file below'
-                sh 'aws s3 ls s3://test-cli-buck/jenkins/'
+                sh 'chmod +x scripts/deploy.sh'
+                sh 'scripts/deploy.sh'
             }
         }
+      
     }
 }
