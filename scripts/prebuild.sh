@@ -4,4 +4,4 @@ if [ -d "$DIR" ]; then
   rm -rf ${DIR}
   echo "I'm deleting  ${DIR}..."
 fi
-sudo apt-get install zip
+
